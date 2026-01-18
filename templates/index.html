@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="panel">
+    <h2>Overview</h2>
+    <div class="stats">
+      <div class="stat-card">
+        <span class="label">Patients</span>
+        <span class="value" id="total-patients">{{ totals.patients }}</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">Appointments</span>
+        <span class="value" id="total-appointments">{{ totals.appointments }}</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">Bills</span>
+        <span class="value" id="total-bills">{{ totals.bills }}</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">Unpaid</span>
+        <span class="value" id="total-unpaid">{{ totals.unpaid }}</span>
+      </div>
+    </div>
+  </section>
+{% endblock %}

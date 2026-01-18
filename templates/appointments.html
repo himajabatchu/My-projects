@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="panel">
+    <h2>Schedule Appointment</h2>
+    <form method="post" class="form-grid">
+      <label>
+        Patient ID
+        <input type="text" name="patient_id" placeholder="P-xxxxxxxx" required>
+      </label>
+      <label>
+        Preferred Date
+        <input type="date" name="preferred_date" required>
+      </label>
+      <label>
+        Reason
+        <input type="text" name="reason" placeholder="optional">
+      </label>
+      <button type="submit">Auto Schedule</button>
+    </form>
+    <p class="helper">
+      The system automatically finds the next available slot starting from the
+      preferred date.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Upcoming Appointments</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Patient</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Reason</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="appointments-body">
+        {% for appointment in appointments %}
+          <tr>
+            <td>{{ appointment.id }}</td>
+            <td>{{ appointment.patient_name }} ({{ appointment.patient_id }})</td>
+            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.time }}</td>
+            <td>{{ appointment.reason }}</td>
+            <td>{{ appointment.status }}</td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="6" class="muted">No appointments yet.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+{% endblock %}

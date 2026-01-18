@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="panel">
+    <h2>Add Patient</h2>
+    <form method="post" class="form-grid">
+      <label>
+        Name
+        <input type="text" name="name" required>
+      </label>
+      <label>
+        Age
+        <input type="number" name="age" min="0" required>
+      </label>
+      <label>
+        Gender
+        <input type="text" name="gender" placeholder="optional">
+      </label>
+      <label>
+        Contact
+        <input type="text" name="contact" placeholder="phone or email">
+      </label>
+      <button type="submit">Create Patient</button>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>Patient Records</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Contact</th>
+          <th>Created</th>
+        </tr>
+      </thead>
+      <tbody id="patients-body">
+        {% for patient in patients %}
+          <tr>
+            <td>{{ patient.id }}</td>
+            <td>{{ patient.name }}</td>
+            <td>{{ patient.age }}</td>
+            <td>{{ patient.gender }}</td>
+            <td>{{ patient.contact }}</td>
+            <td>{{ patient.created_at }}</td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="6" class="muted">No patients yet.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+{% endblock %}

@@ -1,0 +1,50 @@
+{\rtf1\ansi
+\b Hospital Management System - Demo Script\b0\par
+\par
+\b Purpose\b0\par
+Demonstrate patient record management, automated appointment scheduling, and billing with JSON storage.\par
+\par
+\b Audience\b0\par
+Faculty or reviewers evaluating the web application.\par
+\par
+\b Setup\b0\par
+1. Open PowerShell in the project folder.\par
+2. Run: python -m pip install -r requirements.txt\par
+3. Run: python app.py\par
+4. Open: http://127.0.0.1:5000/\par
+\par
+\b Demo Flow\b0\par
+1) Dashboard\par
+- Show live counters for Patients, Appointments, Bills, and Unpaid.\par
+- Mention the stats refresh every few seconds without page reload.\par
+\par
+2) Add Patient\par
+- Go to Patients page.\par
+- Enter: Name = Asha Mehta, Age = 34, Gender = Female, Contact = 9876543210.\par
+- Submit and show the new record appears instantly in the table.\par
+- Mention data is saved to JSON in the data folder.\par
+\par
+3) Auto Schedule Appointment\par
+- Go to Appointments page.\par
+- Enter Patient ID from the table (e.g., P-xxxxxx).\par
+- Preferred Date: choose today.\par
+- Reason: General checkup.\par
+- Submit and highlight the auto-selected time slot.\par
+\par
+4) Create Bill\par
+- Go to Billing page.\par
+- Enter Patient ID, Amount = 1250.00, Description = Consultation + Tests.\par
+- Submit and show the bill appears with status unpaid.\par
+\par
+5) Return to Dashboard\par
+- Show counters updated in real time for patients, appointments, and bills.\par
+\par
+\b Technical Highlights\b0\par
+- Flask backend with JSON storage for patients, appointments, and bills.\par
+- Automated appointment scheduling picks the next available slot.\par
+- Interactive UI uses fetch API for real-time updates.\par
+\par
+\b Q&A Notes\b0\par
+- Data is stored locally in JSON files for simplicity.\par
+- The solution is a prototype-ready web app that can be extended to databases and authentication.\par
+}

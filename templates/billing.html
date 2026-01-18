@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="panel">
+    <h2>Create Bill</h2>
+    <form method="post" class="form-grid">
+      <label>
+        Patient ID
+        <input type="text" name="patient_id" placeholder="P-xxxxxxxx" required>
+      </label>
+      <label>
+        Amount
+        <input type="number" step="0.01" name="amount" required>
+      </label>
+      <label>
+        Description
+        <input type="text" name="description" placeholder="optional">
+      </label>
+      <button type="submit">Generate Bill</button>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>Billing Records</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Patient</th>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Created</th>
+        </tr>
+      </thead>
+      <tbody id="billing-body">
+        {% for bill in bills %}
+          <tr>
+            <td>{{ bill.id }}</td>
+            <td>{{ bill.patient_name }} ({{ bill.patient_id }})</td>
+            <td>{{ bill.description }}</td>
+            <td>{{ bill.amount }}</td>
+            <td>{{ bill.status }}</td>
+            <td>{{ bill.created_at }}</td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="6" class="muted">No billing records yet.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+{% endblock %}
